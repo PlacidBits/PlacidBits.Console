@@ -8,6 +8,7 @@
     <RepositoryUrl>https://github.com/PlacidBits/PlacidBits.Console</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>NET7,Console,Starter,Dependency Injection</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Title>PlacidBits.Console</Title>
     <Authors>PlacidBits</Authors>
@@ -20,6 +21,10 @@
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.Extensions.Hosting" Version="5.0.1" />
     <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
