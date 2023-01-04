@@ -4,6 +4,13 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/PlacidBits/PlacidBits.Console</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>NET7,Console,Starter,Dependency Injection</PackageTags>
+    <Title>PlacidBits.Console</Title>
+    <Authors>PlacidBits</Authors>
+    <Description>Provides a starting point for .NET7+ console applications allowing for unit testing, logging, dependency injection</Description>
   </PropertyGroup>
 
   <ItemGroup>

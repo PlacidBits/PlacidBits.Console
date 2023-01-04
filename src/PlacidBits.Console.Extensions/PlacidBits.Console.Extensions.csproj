@@ -4,6 +4,12 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>PlacidBits.Console.Extensions</Title>
+        <Authors>PlacidBits</Authors>
+        <Description>Provides common extensions for the Placidbits.Console package</Description>
+        <RepositoryUrl>https://github.com/PlacidBits/PlacidBits.Console</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
