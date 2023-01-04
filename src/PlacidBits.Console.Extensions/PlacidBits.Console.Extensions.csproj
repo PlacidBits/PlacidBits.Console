@@ -5,6 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Title>PlacidBits.Console.Extensions</Title>
         <Authors>PlacidBits</Authors>
         <Description>Provides common extensions for the Placidbits.Console package</Description>
