@@ -41,7 +41,7 @@ class MyFunction : IConsoleFunction
 {
     private readonly ILogger<MyFunction> _logger;
 
-    // Grab a logger and a messaging client from DI 
+    // Grab a logger from DI 
     public MyFunction(ILogger<MyFunction> logger)
     {
         _logger = logger;
@@ -70,7 +70,7 @@ builder.AddFunction<MyFunction>();
 
 Once you've created your builder, you'll have console Logging available by default via Serilog. You can then opt in to any of the built-in supported services (mentioned above) available.
 
-For example, if you've opted to install the `PlacidBits.Console.Extensions` pacakge, you can add an EF Core `DbContext` and connect it to MS Sql Server with the following:
+For example, if you've opted to install the `PlacidBits.Console.Extensions` package, you can add an EF Core `DbContext` and connect it to MS Sql Server with the following:
 
 ```csharp
 using PlacidBits.Console;
