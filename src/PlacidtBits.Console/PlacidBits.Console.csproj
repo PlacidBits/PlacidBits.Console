@@ -13,6 +13,7 @@
     <Title>PlacidBits.Console</Title>
     <Authors>PlacidBits</Authors>
     <Description>Provides a starting point for .NET7+ console applications allowing for unit testing, logging, dependency injection</Description>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

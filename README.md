@@ -18,7 +18,7 @@ var builder = RunnerBuilder.CreateRunnerBuilder(args);
 ```
 
 The constructor arguments are as follows:
-- `args` - This should be the args passed into the program from the command line. In a .NET5 or below solution, this would be the args passed into the `public static void Main(string[] args)` function. In a .NET6+ application, it will be the same args, just available globally as the `args` variable. This argument gets passed to the internal call to `Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()` call and can be used to accomplish everything that it would in a scenario dealing directly with the `HostBuilder`.
+- `args` - This should be the args passed into the program from the command line. In a .NET5 or below solution, this would be the args passed into the `public static void Main(string[] args)` function. In a .NET7+ application, it will be the same args, just available globally as the `args` variable. This argument gets passed to the internal call to `Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder()` call and can be used to accomplish everything that it would in a scenario dealing directly with the `HostBuilder`.
 
 ## Adding Functions
 

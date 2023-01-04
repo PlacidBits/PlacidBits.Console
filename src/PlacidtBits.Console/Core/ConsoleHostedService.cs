@@ -11,8 +11,8 @@ public class ConsoleHostedService : IHostedService
     private readonly ILogger<ConsoleHostedService> _logger;
 
     public ConsoleHostedService(
-        IEnumerable<IConsoleFunction> functions, 
-        IHostApplicationLifetime applicationLifetime, 
+        IEnumerable<IConsoleFunction> functions,
+        IHostApplicationLifetime applicationLifetime,
         ILogger<ConsoleHostedService> logger)
     {
         _functions = functions;
@@ -33,9 +33,9 @@ public class ConsoleHostedService : IHostedService
                         _logger.LogInformation("Running functions");
                         await Task.WhenAll(_functions.Select(async f => await f.RunAsync(cancellationToken)));
                     }
-                    catch
+                    catch (Exception ex) when (False(() => _logger.LogCritical(ex, "Fatal error")))
                     {
-
+                        throw;
                     }
                     finally
                     {
@@ -48,6 +48,8 @@ public class ConsoleHostedService : IHostedService
         });
     }
 
+    private static bool False(Action action) { action(); return false; }
+    
     public Task StopAsync(CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
