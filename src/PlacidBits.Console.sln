@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacidBits.Console", "PlacidtBits.Console\PlacidBits.Console.csproj", "{A529CCC4-1500-4B1C-A6A5-C5392A4CC4E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacidBits.Console", "PlacidBits.Console\PlacidBits.Console.csproj", "{A529CCC4-1500-4B1C-A6A5-C5392A4CC4E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlacidBits.Console.Tests", "PlacidBits.Console.Tests\PlacidBits.Console.Tests.csproj", "{7B451BD5-9AE2-4EE7-BE86-D19477D08CE8}"
 EndProject

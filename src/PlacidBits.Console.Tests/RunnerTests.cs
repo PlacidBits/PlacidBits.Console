@@ -13,53 +13,39 @@ public class RunnerTests
     public async Task BuildRunner_FunctionsHaveDI()
     {
         var runner = RunnerBuilder
-            .CreateRunnerBuilder(default)
+            .CreateRunnerBuilder([], default)
             .AddFunction<TestFunction>()
             .AddSqlServer<TestContext>("Dummy connection string")
             .ConfigureServices(services =>
             {
                 services.AddTransient<SomeOtherService>();
             })
-            .AddCliArgs(new[] { "Argument1", "Arg Value 1" })
+            .AddCliArgs(["Argument1", "Arg Value 1"])
             .Build();
 
         await runner.RunAsync();
     }
 }
 
-file class TestFunction : IConsoleFunction
+file class TestFunction(
+    ILogger<TestFunction> logger,
+    CliArguments cliArguments,
+    TestContext context,
+    SomeOtherService someOtherService)
+    : IConsoleFunction
 {
-    private readonly ILogger<TestFunction> _logger;
-    private readonly CliArguments _cliArguments;
-    private readonly TestContext _context;
-    private readonly SomeOtherService _someOtherService;
-
-    public TestFunction(ILogger<TestFunction> logger, CliArguments cliArguments, TestContext context, SomeOtherService someOtherService)
-    {
-        _logger = logger;
-        _cliArguments = cliArguments;
-        _context = context;
-        _someOtherService = someOtherService;
-    }
-
     public Task RunAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Hello from the test function!");
-        _logger.LogInformation("Got cli args {CliArgs}", string.Join(",",_cliArguments.Args));
-        _logger.LogInformation("Got context with connection string: {ConnectionString}", _context.Database.GetConnectionString());
-        _logger.LogInformation("Got a message from my service: {ServiceMessage}", _someOtherService.SayHello());
+        logger.LogInformation("Hello from the test function!");
+        logger.LogInformation("Got cli args {CliArgs}", string.Join(",",cliArguments.Args));
+        logger.LogInformation("Got context with connection string: {ConnectionString}", context.Database.GetConnectionString());
+        logger.LogInformation("Got a message from my service: {ServiceMessage}", someOtherService.SayHello());
         
         return Task.CompletedTask;
     }
 }
 
-file class TestContext : DbContext
-{
-    public TestContext(DbContextOptions options) : base(options)
-    {
-        
-    }
-}
+file class TestContext(DbContextOptions options) : DbContext(options);
 
 file class SomeOtherService
 {

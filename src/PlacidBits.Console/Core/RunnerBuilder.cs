@@ -2,11 +2,10 @@
 using Microsoft.Extensions.Hosting;
 using PlacidBits.Console.Core.Parameters;
 using Serilog;
-using Serilog.Events;
 
 namespace PlacidBits.Console.Core;
 
-public class RunnerBuilder
+public class RunnerBuilder(IHostBuilder hostBuilder)
 {
     private readonly RunnerType _runnerType;
 
@@ -21,7 +20,7 @@ public class RunnerBuilder
         return new RunnerBuilder(Host.CreateDefaultBuilder(args).UseSerilog(), runnerType);
     }
 
-    public IHostBuilder HostBuilder => _hostBuilder;
+    public IHostBuilder HostBuilder => hostBuilder;
 
     private readonly IHostBuilder _hostBuilder;
 
@@ -43,14 +42,14 @@ public class RunnerBuilder
     public RunnerBuilder AddFunction<TFunction>()
         where TFunction : class, IConsoleFunction
     {
-        _hostBuilder.ConfigureServices(services => services.AddTransient<IConsoleFunction, TFunction>());
+        hostBuilder.ConfigureServices(services => services.AddScoped<IConsoleFunction, TFunction>());
 
         return this;
     }
 
     public RunnerBuilder AddCliArgs(string[] args)
     {
-        _hostBuilder.ConfigureServices(services => services.AddSingleton(new CliArguments(args)));
+        hostBuilder.ConfigureServices(services => services.AddSingleton(new CliArguments(args)));
 
         return this;
     }
