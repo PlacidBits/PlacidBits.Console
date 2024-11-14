@@ -15,6 +15,11 @@ public class ConsoleHostedService : IHostedService
         IHostApplicationLifetime applicationLifetime,
         ILogger<ConsoleHostedService> logger)
     {
+        if (!functions?.Any() == true)
+        {
+            throw new ArgumentException("You must register at least one function", nameof(functions));
+        }
+
         _functions = functions;
         _applicationLifetime = applicationLifetime;
         _logger = logger;
@@ -49,7 +54,7 @@ public class ConsoleHostedService : IHostedService
     }
 
     private static bool False(Action action) { action(); return false; }
-    
+
     public Task StopAsync(CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
