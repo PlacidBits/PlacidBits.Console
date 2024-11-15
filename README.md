@@ -3,7 +3,7 @@ Console app starter package
 
 # Installation
 
-- Create a .NET7-based console application.
+- Create a .NET 9-based console application.
 - Install the `PlacidBits.Console` package. You may optionally install the `PlacidBits.Console.Extensions` package
 
 # Setup
