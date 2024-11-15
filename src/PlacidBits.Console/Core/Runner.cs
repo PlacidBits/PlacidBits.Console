@@ -7,8 +7,19 @@ public class Runner(IHostBuilder hostBuilder, RunnerType runnerType = RunnerType
 {
     public async Task RunAsync()
     {
-        hostBuilder.ConfigureServices(services =>
-            services.AddHostedService<ConsoleHostedService>());
+        switch (runnerType)
+        {
+            case RunnerType.Default:
+                hostBuilder.ConfigureServices(services =>
+                    services.AddHostedService<ConsoleHostedService>());
+                break;
+            case RunnerType.LongRunning:
+                hostBuilder.ConfigureServices(services =>
+                    services.AddHostedService<ConsoleBackgroundService>());
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
         
         var app = hostBuilder.Build();
 
