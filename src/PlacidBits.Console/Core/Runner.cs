@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace PlacidBits.Console.Core;
 
-public class Runner(IHostBuilder hostBuilder)
+public class Runner(IHostBuilder hostBuilder, RunnerType runnerType = RunnerType.Default)
 {
     public async Task RunAsync()
     {

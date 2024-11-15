@@ -5,10 +5,8 @@ using Serilog;
 
 namespace PlacidBits.Console.Core;
 
-public class RunnerBuilder(IHostBuilder hostBuilder)
+public class RunnerBuilder(IHostBuilder hostBuilder, RunnerType runnerType)
 {
-    private readonly RunnerType _runnerType;
-
     public static RunnerBuilder CreateRunnerBuilder(
         string[] args,
         LoggerConfiguration? loggerConfiguration = null,
@@ -22,19 +20,11 @@ public class RunnerBuilder(IHostBuilder hostBuilder)
 
     public IHostBuilder HostBuilder => hostBuilder;
 
-    private readonly IHostBuilder _hostBuilder;
-
-    public RunnerBuilder(IHostBuilder hostBuilder, RunnerType runnerType)
-    {
-        _hostBuilder = hostBuilder;
-        _runnerType = runnerType;
-    }
-
-    public Runner Build() => new Runner(_hostBuilder, _runnerType);
+    public Runner Build() => new Runner(hostBuilder, runnerType);
 
     public RunnerBuilder ConfigureServices(Action<IServiceCollection> configureDelegate)
     {
-        _hostBuilder.ConfigureServices(configureDelegate);
+        hostBuilder.ConfigureServices(configureDelegate);
 
         return this;
     }
